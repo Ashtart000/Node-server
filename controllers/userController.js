@@ -7,3 +7,9 @@ module.exports.createUser = (req, resp) => {
     resp.statusCode = 201;
     resp.send(user)
 }
+
+module.exports.getAllUsers = (req, resp) => {
+    const users = User.findAll();
+    resp.statusCode = 200;
+    resp.send(users);
+}
