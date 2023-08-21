@@ -15,8 +15,8 @@ class User {
         db.set(this.userId, this);
     }
 
-    static findUser(id) {
-        return db.get(id);
+    static findUser(userId) {
+        return db.get(userId);
     }
 
     static findAll() {

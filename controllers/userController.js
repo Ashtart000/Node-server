@@ -13,3 +13,10 @@ module.exports.getAllUsers = (req, resp) => {
     resp.statusCode = 200;
     resp.send(users);
 }
+
+module.exports.getOneUser = (req, resp) => {
+    const {userId} = req.params;
+    const user = User.findUser(Number(userId));
+    resp.statusCode = 200;
+    resp.send(user)
+}
