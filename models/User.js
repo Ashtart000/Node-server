@@ -15,6 +15,10 @@ class User {
         db.set(this.userId, this);
     }
 
+    updateUser(newData) {
+        db.set(this.userId, {...this, ...newData})
+    }
+
     static findUser(userId) {
         return db.get(userId);
     }

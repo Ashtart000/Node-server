@@ -17,8 +17,12 @@ module.exports.getAllUsers = (req, resp) => {
 module.exports.getOneUser = (req, resp) => {
     const {userId} = req.params;
     const user = User.findUser(Number(userId));
-    resp.statusCode = 200;
-    resp.send(user)
+    if(user) {
+        resp.status(200).send(user);
+    } else {
+        resp.status(404).end();
+    }
+    
 }
 
 module.exports.deleteOneUser = (req,resp) => {
@@ -30,4 +34,15 @@ module.exports.deleteOneUser = (req,resp) => {
     } else {
         resp.status(404).end();
     }
+}
+
+module.exports.updateUser = (req, resp) => {
+    const {body, params: {userId}} = req;
+    const user = User.findUser(Number(userId));
+    if(user) {
+        user.updateUser(body);
+        resp.status(200).end();
+    } else {
+        resp.status(404).end();
+    }   
 }
