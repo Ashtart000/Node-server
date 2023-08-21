@@ -24,7 +24,7 @@ class User {
     }
 
     deleteUser() {
-        return db.delete(this.id);
+        return db.delete(this.userId);
     }
 }
 
